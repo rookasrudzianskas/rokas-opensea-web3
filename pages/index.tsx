@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useAddress, useMetamask } from '@thirdweb-dev/react'
+import Main from "../components/Home/Main";
 
 const style = {
     wrapper: `flex h-screen items-center justify-center`,
@@ -10,7 +11,8 @@ const style = {
 
 const Home: NextPage = () => {
     const connectWithMetamask = useMetamask()
-    const address = useAddress()
+    const address = useAddress();
+
 
     return (
     <div className="">
@@ -19,6 +21,26 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+        {address ? (
+            <>
+                <Main />
+            </>
+        ) :
+           <>
+                <Auth />
+           </>
+        }
+    </div>
+  )
+}
+
+export default Home;
+
+export const Auth = () => {
+    const connectWithMetamask = useMetamask()
+    const address = useAddress();
+
+    return (
         <div className={style.wrapper}>
             <button
                 onClick={connectWithMetamask}
@@ -27,9 +49,5 @@ const Home: NextPage = () => {
                 Connect Metamask
             </button>
         </div>
-
-    </div>
-  )
+    )
 }
-
-export default Home
