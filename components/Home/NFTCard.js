@@ -19,7 +19,7 @@ const style = {
 }
 
 const NFTCard = ({ listing }) => {
-    console.log('This is listing', listing)
+    // console.log('This is listing', listing)
     return (
         <div className={style.wrapper}>
             <div className={style.imageContainer}>

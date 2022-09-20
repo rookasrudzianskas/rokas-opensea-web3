@@ -22,7 +22,7 @@ const Listings = () => {
             const list = await marketplace.getActiveListings()
 
             setListings(list)
-            console.log(list)
+            // console.log(list)
         } catch (error) {
             console.error(error)
         }
