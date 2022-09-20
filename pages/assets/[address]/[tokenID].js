@@ -9,10 +9,10 @@ import NFTImage from '../../../components/NFTDetails/NFTImage'
 import NFTSalesInfo from '../../../components/NFTDetails/NFTSalesInfo'
 
 function NFT() {
-    const [listing, setListing] = useState()
-    const [loading, setLoading] = useState(false)
-    const router = useRouter()
-    const { tokenID } = router.query
+    const [listing, setListing] = useState();
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+    const { tokenID } = router.query;
 
     const address = useAddress()
     const marketplace = useMarketplace(
@@ -20,30 +20,30 @@ function NFT() {
     )
 
     useEffect(() => {
-        getListing()
+        getListing();
     }, [])
 
     useEffect(() => {
-        if (!address) router.replace('/')
-    }, [address])
+        if (!address) router.replace('/');
+    }, [address]);
 
     const getListing = async () => {
         try {
-            setLoading(true)
-            const listing = await marketplace.getListing(BigNumber.from(tokenID))
+            setLoading(true);
+            const listing = await marketplace.getListing(BigNumber.from(tokenID));
 
-            setListing(listing)
-            setLoading(false)
+            setListing(listing);
+            setLoading(false);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
 
     const buyNFT = async () => {
         try {
-            await marketplace.buyoutListing(tokenID, 1)
+            await marketplace.buyoutListing(tokenID, 1);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
 

@@ -66,4 +66,4 @@ const NFTCard = ({ listing }) => {
     )
 }
 
-export default NFTCard
+export default NFTCard;
